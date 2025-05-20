@@ -25,7 +25,7 @@ setelah kita sudah membuat security group maka kita sudah bisa membuat instance 
 2. kemudian pilih standard lalu pilih yang mysql
 3. untuk templates kita pilih yang free tier lalu DB cluster identifier diisi bebas untuk namanya sesuai keinginan
 4. kemdian untuk Master Username : (biarkan admin ) Master Password : isi misal P4ssw0rd123 
-5. untuk public akses = no ya masa db
+5. untuk public akses = no 
 6. Untuk Security group pastikan pilih security group yang sudah kita buat tadi(SG-ServerDB)
 7. Klik Create Database
 8. Tunggu sampai EndPoint muncul
