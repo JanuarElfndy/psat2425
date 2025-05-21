@@ -37,21 +37,38 @@ setelah kita sudah membuat security group maka kita sudah bisa membuat instance 
 5. pilih security group yang sudah kita buat sebelumnya (SG-serverWeb) kemudian launch instance
 6. Di bagian Advanced Details temukan User Data
 7. Paste skrip yang sudah dibuat ke dalam kolom User Data
+
 berikut ini scriptnya :
+
 #!/bin/bash
+
 sudo apt update -y
+
 sudo apt install -y apache2 php php-mysql libapache2-mod-php mysql-client
+
 sudo rm -rf /var/www/html/{*,.*}
+
 sudo git clone https://github.com/paknux/crudsiswa.git /var/www/html
+
 sudo chmod -R 777 /var/www/html
+
 echo DB_USER=admin > /var/www/html/.env
+
 echo DB_PASS=P4ssw0rd123  >> /var/www/html/.env
+
 echo DB_NAME=crudsiswa  >> /var/www/html/.env
+
 echo DB_HOST=rds11tjkt1.czt6n8ylfvyb.us-east-1.rds.amazonaws.com >> /var/www/html/.env
+
+
 sudo apt install openssl
+
 sudo a2enmod ssl
+
 sudo a2ensite default-ssl.conf
+
 sudo systemctl reload apache2
+
 
 ## Deploy aplikasi psat2425
 1. Masuk ke menu instance yang sudah kita buat sebelumnya 
@@ -68,14 +85,22 @@ sudo git clone https://github.com/JanuarElfndy/psat2425.git /var/www/html >>
 sudo chmod -R 777 /var/www/html
 
 echo DB_USER=admin > /var/www/html/.env >> biarkan admin
+
 echo DB_PASS=P4ssw0rd123 >> /var/www/html/.env >> masukan password seperti di database
+
 echo DB_NAME=psat2425 >> /var/www/html/.env >> 
+
 echo DB_HOST=rdsku.czt6n8ylfvyb.us-east-1.rds.amazonaws.com >> /var/www/html/.env >> diisi dengan endpoint yang sudah kita dapatkan tadi
 
+
 sudo apt install openssl
+
 sudo a2enmod ssl
+
 sudo a2ensite default-ssl.conf
+
 sudo systemctl reload apache2
+
 
 jika sudah berhasil dideploy maka kita tinggal salin ip public dan buka dichrome kemudian masukan username dan password yang tadi, dan kita sudah bisa menambahkan data kita.
 
